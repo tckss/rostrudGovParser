@@ -94,12 +94,10 @@ def main() -> None:
     with open("hosts.txt", "r") as file:
         hosts = [x.replace("\n", "") for x in file.readlines()]
     
-    export_data = []
 
     for host in hosts:
-        export_data += parser.parse_pages_by_host(host)
-    
-    sqlservice.upload_exporting_data(export_data)
+        export_data = parser.parse_pages_by_host(host)
+        sqlservice.upload_exporting_data(export_data)
         
 
 if __name__ == "__main__":
