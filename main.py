@@ -78,7 +78,7 @@ class SqlService:
 
         Logger.log("Выгрузка элементов в базу данных...")
 
-        cursor.executemany("INSERT INTO NewsData(date, text) VALUES(:date, :text)", to_upload_textes)
+        cursor.executemany("INSERT OR IGNORE INTO NewsData(date, text) VALUES(:date, :text)", to_upload_textes)
 
         connection.commit()
         connection.close()
